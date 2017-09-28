@@ -20,7 +20,7 @@ namespace SistemaDeEstudos.Models
         [ForeignKey("idUser")]
         public virtual User user { get; set; }
 
-        public string idSession { get; set; }
+        public int idSession { get; set; }
         [ForeignKey("idSession")]
         public virtual StudySession Session { get; set; }
 

@@ -161,19 +161,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Controllers\SessionParticipantsController.cs" />
+    <Compile Include="Controllers\StudentGradesController.cs" />
+    <Compile Include="Controllers\StudySessionsController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\TimesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709280109127_Initial.cs" />
+    <Compile Include="Migrations\201709280109127_Initial.Designer.cs">
+      <DependentUpon>201709280109127_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\SessionParticipants.cs" />
     <Compile Include="Models\StudentGrade.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Times.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\StudySession.cs" />
-    <Compile Include="Models\StudySessionParticipants.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +203,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709280109127_Initial.resx">
+      <DependentUpon>201709280109127_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

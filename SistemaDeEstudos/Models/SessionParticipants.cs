@@ -7,21 +7,20 @@ using System.Web;
 
 namespace SistemaDeEstudos.Models
 {
-    public class StudySessionParticipants
+    public class SessionParticipants
     {
+
         [Key]
         public int Id { get; set; }
-      
+
         public int IdStudySession { get; set; }
         [ForeignKey("IdStudySession")]
         public virtual StudySession Session { get; set; }
 
+        public int sample { get; set; }
 
-        
         public int ParticipantID { get; set; }
         [ForeignKey("ParticipantID")]
         public virtual User Participant { get; set; }
-
-
     }
 }
