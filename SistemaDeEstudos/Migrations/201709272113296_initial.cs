@@ -7,6 +7,7 @@ namespace SistemaDeEstudos.Migrations
     {
         public override void Up()
         {
+            //a
             CreateTable(
                 "dbo.Logins",
                 c => new
