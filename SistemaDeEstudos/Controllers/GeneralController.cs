@@ -5,16 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace SistemaDeEstudos.Controllers
 {
-    public class GeneralController : ApiController
+    public class GeneralController : Controller
     {
-        private Model2 db = new Model2();
-        // GET: api/Logins
-        public IQueryable<Login> GetLogins()
+        public ActionResult Index()
         {
-            return db.Logins;
+            return View();
         }
     }
 }

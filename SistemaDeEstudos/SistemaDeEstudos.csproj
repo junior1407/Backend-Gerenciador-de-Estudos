@@ -195,6 +195,7 @@
     <None Include="packages.config" />
     <Content Include="Views\web.config" />
     <None Include="Properties\PublishProfiles\gerenciadorestudos - Web Deploy.pubxml" />
+    <Content Include="Views\General\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
