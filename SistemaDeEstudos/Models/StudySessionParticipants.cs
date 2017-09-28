@@ -9,6 +9,7 @@ namespace SistemaDeEstudos.Models
 {
     public class StudySessionParticipants
     {
+        [Key]
         public int Id { get; set; }
       
         public int IdStudySession { get; set; }
