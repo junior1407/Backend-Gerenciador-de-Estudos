@@ -10,7 +10,7 @@ namespace SistemaDeEstudos.Controllers
 {
     public class GeneralController : ApiController
     {
-        private Model1 db = new Model1();
+        private Model2 db = new Model2();
         // GET: api/Logins
         public IQueryable<Login> GetLogins()
         {

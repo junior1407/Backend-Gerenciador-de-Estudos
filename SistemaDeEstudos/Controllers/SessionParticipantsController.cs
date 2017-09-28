@@ -15,7 +15,7 @@ namespace SistemaDeEstudos.Controllers
 {
     public class SessionParticipantsController : ApiController
     {
-        private Model1 db = new Model1();
+        private Model2 db = new Model2();
 
         // GET: api/SessionParticipants
         public IQueryable<SessionParticipants> GetSessionParticipants()

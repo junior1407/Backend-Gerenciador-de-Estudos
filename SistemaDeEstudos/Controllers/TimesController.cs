@@ -15,7 +15,7 @@ namespace SistemaDeEstudos.Controllers
 {
     public class TimesController : ApiController
     {
-        private Model1 db = new Model1();
+        private Model2 db = new Model2();
 
         // GET: api/Times
         public IQueryable<Times> GetTimes()

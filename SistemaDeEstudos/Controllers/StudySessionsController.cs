@@ -15,7 +15,7 @@ namespace SistemaDeEstudos.Controllers
 {
     public class StudySessionsController : ApiController
     {
-        private Model1 db = new Model1();
+        private Model2 db = new Model2();
 
         // GET: api/StudySessions
         public IQueryable<StudySession> GetStudySessions()

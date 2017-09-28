@@ -4,12 +4,11 @@ namespace SistemaDeEstudos.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-
-  [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
-    public partial class Model1 : DbContext
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    public partial class Model2 : DbContext
     {
-        public Model1()
-            : base("name=Model11")
+        public Model2()
+            : base("name=Model2")
         {
         }
 
