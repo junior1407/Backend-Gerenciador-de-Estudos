@@ -80,6 +80,7 @@ namespace SistemaDeEstudos.Controllers
                 return BadRequest(ModelState);
             }
 
+
             db.Logins.Add(login);
             await db.SaveChangesAsync();
 

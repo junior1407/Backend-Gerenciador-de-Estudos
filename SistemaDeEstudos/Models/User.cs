@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,7 +21,8 @@ namespace SistemaDeEstudos.Models
         [Required]
         public string idRedeSocial { get; set; }
 
-    //    public virtual ICollection<Times> Times { get; set; }
-       public virtual ICollection<StudentGrade> Grades { get; set; }
+        //    public virtual ICollection<Times> Times { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<StudentGrade> Grades { get; set; }
     }   
 }

@@ -30,5 +30,6 @@ namespace SistemaDeEstudos.Models
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.SessionParticipants> SessionParticipants { get; set; }
 
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.Login> Logins { get; set; }
+        public System.Data.Entity.DbSet<SistemaDeEstudos.Models.LoginToken> LoginTokens { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,11 +20,11 @@ namespace SistemaDeEstudos.Models
         public DateTime end { get; set; }
         
         public int IdUser { get; set; }
-        [ForeignKey("IdUser")]
+        [ForeignKey("IdUser"), JsonIgnore]
         public virtual User Responsible { get; set; }
 
         public int IdSubject { get; set; }
-        [ForeignKey("IdSubject")]
+        [ForeignKey("IdSubject"), JsonIgnore]
         public virtual Subject Subject { get; set; }
 
 
