@@ -74,6 +74,13 @@ namespace SistemaDeEstudos.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+       [Route("api/LoginTokens/Refresh")]
+        [ResponseType(typeof(LoginToken))]
+        public async Task<IHttpActionResult> GetRefreshToken()
+        {
+            return Ok();
+        }
+
         // POST: api/LoginTokens
         [ResponseType(typeof(LoginToken))]
         public async Task<IHttpActionResult> PostLoginToken(Login l)
@@ -83,10 +90,22 @@ namespace SistemaDeEstudos.Controllers
                 return BadRequest(ModelState);
             }
             string password = Encrypt.encryptPassword(l.Password);
-            List<Login> list = await db.Logins.Where(x => (x.Username == l.Username && x.Password == l.Password)).ToListAsync();
+            List<Login> list = await db.Logins.Where(x => (x.Username == l.Username && x.Password == l.Password)).
+                ToListAsync<Login>();
             if (list.Count()==0)
             {
-                return BadRequest(); // login invalido
+                return BadRequest();
+            }
+            DateTime now = DateTime.UtcNow;
+            List<LoginToken> t = await db.LoginTokens.Where((x) => (x.End > now)).ToListAsync<LoginToken>();
+            if (t.Count()>0 )
+            {
+                LoginToken selected = t[0];
+                db.LoginTokens.Attach(selected);
+                selected.End = DateTime.UtcNow.AddHours(1);
+
+                await db.SaveChangesAsync();
+                return Ok(selected);
             }
             LoginToken token = new LoginToken();
             token.IdUser = list[0].IdUser;

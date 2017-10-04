@@ -22,8 +22,13 @@ namespace SistemaDeEstudos.Models
         public DateTime End { get; set; }
         [ JsonIgnore]
         public int IdUser { get; set; }
-        [ForeignKey("IdUser")]
+        [ForeignKey("IdUser"), JsonIgnore]
         public virtual User Student { get; set; }
 
+        public Boolean IsValid()
+        {
+            return (DateTime.UtcNow<End);
+        }
     }
+
 }
