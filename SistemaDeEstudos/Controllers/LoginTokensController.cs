@@ -13,6 +13,7 @@ using SistemaDeEstudos.Models;
 using System.Security.Cryptography;
 using System.Text;
 using SistemaDeEstudos.src;
+using System.Web.Helpers;
 
 namespace SistemaDeEstudos.Controllers
 {
@@ -94,7 +95,7 @@ namespace SistemaDeEstudos.Controllers
                 ToListAsync<Login>();
             if (list.Count()==0)
             {
-                return BadRequest();
+                return BadRequest("Wrong Password");
             }
             DateTime now = DateTime.UtcNow;
             List<LoginToken> t = await db.LoginTokens.Where((x) => (x.End > now)).ToListAsync<LoginToken>();
