@@ -17,13 +17,10 @@ namespace SistemaDeEstudos.Controllers
     {
         private Model2 db = new Model2();
 
-        // GET: api/Logins
         public IQueryable<Login> GetLogins()
         {
             return db.Logins;
         }
-
-        // GET: api/Logins/5
         [ResponseType(typeof(Login))]
         public async Task<IHttpActionResult> GetLogin(int id)
         {
@@ -35,6 +32,62 @@ namespace SistemaDeEstudos.Controllers
 
             return Ok(login);
         }
+
+
+        [Route("api/Logins/Login")]
+        [ResponseType(typeof(LoginToken))]
+        public async Task<IHttpActionResult> Login(LoginModel l)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            //     Login login = db.Logins.FirstOrDefault(x => (x.Username == l.Username && x.Password == l.Password));
+            Login login = db.Logins.Where(x => (x.Username == l.Username && x.Password == l.Password)).FirstOrDefault() ;
+            if (l != default(Login)){
+           /*
+            if (await db.Logins.AnyAsync(x=> x.Username == l.Username && x.Password==l.Password))
+            {*/
+                return Ok("Ja tem login");
+
+
+                DateTime now = DateTime.UtcNow;
+               /* List<LoginToken> t = await db.LoginTokens.Where((x) => (x.End > now)).ToListAsync<LoginToken>();
+                if (t.Count() > 0)
+                {
+                    LoginToken selected = t[0];
+                    db.LoginTokens.Attach(selected);
+                    selected.End = DateTime.UtcNow.AddHours(1);
+                    await db.SaveChangesAsync();
+                    return Ok(selected);
+                }
+
+                LoginToken token = new LoginToken();
+                token.IdUser = list[0].IdUser;
+                token.Start = DateTime.UtcNow;
+                token.End = token.Start.AddHours(1);
+                token.Token = Encrypt.getRandomString() + Request.Headers.ToString();
+                token.Reset_token = Encrypt.getRandomString();
+                //DateTime now = TimeZoneInfo.ConvertTime(DateTime.UtcNow, 
+                // TimeZoneInfo.FindSystemTimeZoneById("065"));
+                db.LoginTokens.Add(token);
+                await db.SaveChangesAsync();
+
+                System.Diagnostics.Debug.WriteLine(Request.Headers.GetValues("Authorization").ElementAt(0));
+
+
+           
+    */
+
+
+
+
+
+            }
+            return BadRequest("Credenciais erradas");
+           }
+
 
         // PUT: api/Logins/5
         [ResponseType(typeof(void))]
@@ -79,11 +132,8 @@ namespace SistemaDeEstudos.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-
             db.Logins.Add(login);
             await db.SaveChangesAsync();
-
             return CreatedAtRoute("DefaultApi", new { id = login.Id }, login);
         }
 
@@ -113,7 +163,7 @@ namespace SistemaDeEstudos.Controllers
         }
 
         private bool LoginExists(int id)
-        {
+        {   
             return db.Logins.Count(e => e.Id == id) > 0;
         }
     }

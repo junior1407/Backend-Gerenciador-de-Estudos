@@ -22,14 +22,14 @@ namespace SistemaDeEstudos.Models
         public int IdUser { get; set; }
         [ForeignKey("IdUser"), JsonIgnore]
         public virtual User Responsible { get; set; }
-
+        
         public int IdSubject { get; set; }
         [ForeignKey("IdSubject"), JsonIgnore]
         public virtual Subject Subject { get; set; }
 
 
 
-        public virtual ICollection<User> participants { get; set; }
+       // public virtual ICollection<User> participants { get; set; }
 
 
 

@@ -73,18 +73,26 @@ namespace SistemaDeEstudos.Controllers
 
         // POST: api/Users
         [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> PostUser(User user)
+        public async Task<IHttpActionResult> PostUser(RegisterInformationModel r)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            User u = new Models.User { Avatar = r.Avatar,
+                idRedeSocial = r.idRedeSocial,
+                Nickname = r.Nickname };
+            db.Users.Add(u);
+            //db.Users.FirstOrDefault(x => x.Id == '');
+           
+            //  db.Users.Add(user);
+          //  await db.SaveChangesAsync();
+            System.Diagnostics.Debug.WriteLine(u.Id);
+             return CreatedAtRoute("DefaultApi", new { }, u); //new { id = user.Id }, user);
+         //   return CreatedAtRoute("DefaultApi", new { id = login.Id }, login);
+        }   
+        //return CreatedAtRoute("DefaultApi", new { controller = "messages", id = message.Id }, message);
 
-            db.Users.Add(user);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
-        }
 
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
