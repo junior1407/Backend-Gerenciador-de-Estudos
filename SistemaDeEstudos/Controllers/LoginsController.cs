@@ -43,16 +43,25 @@ namespace SistemaDeEstudos.Controllers
             {
                 return BadRequest(ModelState);
             }
-            //     Login login = db.Logins.FirstOrDefault(x => (x.Username == l.Username && x.Password == l.Password));
-            Login login = db.Logins.Where(x => (x.Username == l.Username && x.Password == l.Password)).FirstOrDefault() ;
-            if (l != default(Login)){
-           /*
-            if (await db.Logins.AnyAsync(x=> x.Username == l.Username && x.Password==l.Password))
-            {*/
-                return Ok("Ja tem login");
+               Login login = db.Logins.FirstOrDefault(x => (x.Username == l.Username && x.Password == l.Password));
+            if (login == default(Login))
+            {
+                return Unauthorized();
+            }
+
+            IEnumerable<LoginToken> oldTokens = db.LoginTokens.Where(x => x.IdUser == login.IdUser);
+            db.LoginTokens.RemoveRange(oldTokens);
+            System.Diagnostics.Debug.WriteLine(oldTokens);
+            db.SaveChanges();
+            return Ok(login);
+            /*
+             if (await db.Logins.AnyAsync(x=> x.Username == l.Username && x.Password==l.Password))
+             {*/
+            //System.Diagnostics.Debug.WriteLine(login.ToString()+ "tipo:"+ login.GetType().ToString());
+        //    return Ok("{\"Message\": \"Ja tem login\"");
 
 
-                DateTime now = DateTime.UtcNow;
+              //  DateTime now = DateTime.UtcNow;
                /* List<LoginToken> t = await db.LoginTokens.Where((x) => (x.End > now)).ToListAsync<LoginToken>();
                 if (t.Count() > 0)
                 {
@@ -84,9 +93,9 @@ namespace SistemaDeEstudos.Controllers
 
 
 
-            }
-            return BadRequest("Credenciais erradas");
-           }
+         //   }
+         //   return BadRequest("Credenciais erradas");
+          }
 
 
         // PUT: api/Logins/5
