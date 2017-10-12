@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SistemaDeEstudos.Models;
+using SistemaDeEstudos.src;
 
 namespace SistemaDeEstudos.Controllers
 {
@@ -17,28 +18,48 @@ namespace SistemaDeEstudos.Controllers
     {
         private Model2 db = new Model2();
 
-        public IQueryable<Login> GetLogins()
+
+
+
+        [HttpPost]
+        [Route("api/Logins/Refresh")]
+        [ResponseType(typeof(LoginToken))]
+        public async Task<IHttpActionResult> GetRefreshToken(LoginToken l)
         {
-            return db.Logins;
-        }
-        [ResponseType(typeof(Login))]
-        public async Task<IHttpActionResult> GetLogin(int id)
-        {
-            Login login = await db.Logins.FindAsync(id);
-            if (login == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return BadRequest(ModelState);
             }
 
-            return Ok(login);
+            LoginToken loginToken = db.LoginTokens.FirstOrDefault(x => ((x.Token == l.Token) && (x.Reset_token==l.Reset_token)));
+            if (default(LoginToken)==loginToken)
+            {
+                return Unauthorized();
+            }
+            LoginToken novo = new LoginToken();
+            novo.IdUser = loginToken.IdUser;
+            novo.Start = DateTime.UtcNow;
+            novo.End = novo.Start.AddHours(1);
+            novo.Token = Encrypt.getRandomString() + novo.IdUser;
+            novo.Reset_token = Encrypt.getRandomString() + novo.IdUser;
+
+            IEnumerable<LoginToken> oldTokens = db.LoginTokens.Where(x => x.IdUser == novo.IdUser);
+            db.LoginTokens.RemoveRange(oldTokens);
+
+            db.LoginTokens.Add(novo);
+            db.SaveChanges();
+
+            return Ok(novo);
+
+
         }
 
 
-        [Route("api/Logins/Login")]
+        //[Route("api/Logins/Login")]
         [ResponseType(typeof(LoginToken))]
-        public async Task<IHttpActionResult> Login(LoginModel l)
+        public async Task<IHttpActionResult> PostLogin(LoginModel l)
         {
-
+       
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -52,8 +73,17 @@ namespace SistemaDeEstudos.Controllers
             IEnumerable<LoginToken> oldTokens = db.LoginTokens.Where(x => x.IdUser == login.IdUser);
             db.LoginTokens.RemoveRange(oldTokens);
             System.Diagnostics.Debug.WriteLine(oldTokens);
+            LoginToken token = new LoginToken();
+            token.IdUser = login.IdUser;
+            token.Start = DateTime.UtcNow;
+            token.End = token.Start.AddHours(1);
+            token.Token = Encrypt.getRandomString()+login.IdUser;
+            token.Reset_token = Encrypt.getRandomString()+ login.IdUser;
+            //DateTime now = TimeZoneInfo.ConvertTime(DateTime.UtcNow, 
+            // TimeZoneInfo.FindSystemTimeZoneById("065"));
+            db.LoginTokens.Add(token);
             db.SaveChanges();
-            return Ok(login);
+            return Ok(token);
             /*
              if (await db.Logins.AnyAsync(x=> x.Username == l.Username && x.Password==l.Password))
              {*/
@@ -97,7 +127,7 @@ namespace SistemaDeEstudos.Controllers
          //   return BadRequest("Credenciais erradas");
           }
 
-
+/*
         // PUT: api/Logins/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutLogin(int id, Login login)
@@ -132,10 +162,10 @@ namespace SistemaDeEstudos.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        */
         // POST: api/Logins
-        [ResponseType(typeof(Login))]
-        public async Task<IHttpActionResult> PostLogin(Login login)
+        //[ResponseType(typeof(Login))]
+    /*    public async Task<IHttpActionResult> PostLogin(Login login)
         {
             if (!ModelState.IsValid)
             {
@@ -144,10 +174,10 @@ namespace SistemaDeEstudos.Controllers
             db.Logins.Add(login);
             await db.SaveChangesAsync();
             return CreatedAtRoute("DefaultApi", new { id = login.Id }, login);
-        }
+        }*/
 
         // DELETE: api/Logins/5
-        [ResponseType(typeof(Login))]
+   /*     [ResponseType(typeof(Login))]
         public async Task<IHttpActionResult> DeleteLogin(int id)
         {
             Login login = await db.Logins.FindAsync(id);
@@ -161,7 +191,7 @@ namespace SistemaDeEstudos.Controllers
 
             return Ok(login);
         }
-
+        */
         protected override void Dispose(bool disposing)
         {
             if (disposing)

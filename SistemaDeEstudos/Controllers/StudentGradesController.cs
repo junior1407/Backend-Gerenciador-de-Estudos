@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SistemaDeEstudos.Models;
+using SistemaDeEstudos.Controllers;
+using SistemaDeEstudos.src;
+using System.Data.Entity;
 
 namespace SistemaDeEstudos.Controllers
 {
@@ -17,23 +20,27 @@ namespace SistemaDeEstudos.Controllers
     {
         private Model2 db = new Model2();
 
-        // GET: api/StudentGrades
-        public IQueryable<StudentGrade> GetStudentGrades()
+        [ResponseType(typeof(IEnumerable<StudentGrade>))]
+        public IHttpActionResult GetStudentGrade(int id)
         {
-            return db.StudentGrades;
-        }
-
-        // GET: api/StudentGrades/5
-        [ResponseType(typeof(StudentGrade))]
-        public async Task<IHttpActionResult> GetStudentGrade(int id)
-        {
-            StudentGrade studentGrade = await db.StudentGrades.FindAsync(id);
-            if (studentGrade == null)
+         //   db.Configuration.ProxyCreationEnabled = false;
+            try
             {
-                return NotFound();
-            }
+                string token = Request.Headers.GetValues("Authorization").ElementAt(0);
 
-            return Ok(studentGrade);
+                if (Encrypt.isAuthorized(token, id, db) == false)
+                {
+                    System.Diagnostics.Debug.WriteLine("token~ "+token);
+                    return Unauthorized();
+                }
+                IEnumerable<StudentGrade> grades = db.StudentGrades.Where(x => x.IdUser == id);
+                   System.Diagnostics.Debug.WriteLine("tam:"+grades.Count());
+                return Ok(grades.ToList());
+            }
+            catch(InvalidOperationException e)
+            {
+                return BadRequest();
+            }
         }
 
         // PUT: api/StudentGrades/5

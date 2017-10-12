@@ -75,9 +75,11 @@ namespace SistemaDeEstudos.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        [HttpPost]
        [Route("api/LoginTokens/Refresh")]
         [ResponseType(typeof(LoginToken))]
-        public async Task<IHttpActionResult> GetRefreshToken()
+        public async Task<IHttpActionResult> PostRefreshToken(LoginToken l)
         {
             return Ok();
         }
