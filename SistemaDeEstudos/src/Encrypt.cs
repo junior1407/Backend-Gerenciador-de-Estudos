@@ -36,19 +36,16 @@ namespace SistemaDeEstudos.src
         {
 
 
-            List<LoginToken> list = db.LoginTokens.ToList();
+          
             LoginToken e = db.LoginTokens.FirstOrDefault(z => z.Token == token);
-            // System.Diagnostics.Debug.WriteLine(e.IdUser + "\\" + e.Token + "\\" + token + "\\" + (e.Token == token) + "\\" + String.Equals(token, e.Token));
            DateTime now = DateTime.UtcNow;
+            System.Diagnostics.Debug.WriteLine("LoginToken:" +e);
+            System.Diagnostics.Debug.WriteLine("now:" + now+ "e now: "+e.End);
             if (e == default(LoginToken) || (now > e.End ))
             {
-                System.Diagnostics.Debug.WriteLine("Cai1");
                 return default(User);
             }
-
-            System.Diagnostics.Debug.WriteLine("Cai2");
             User x = e.Student;
-            System.Diagnostics.Debug.WriteLine(x.Nickname+"\\"+x.Avatar);
             return e.Student;
         }
 

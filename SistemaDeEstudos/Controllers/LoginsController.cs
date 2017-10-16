@@ -18,9 +18,6 @@ namespace SistemaDeEstudos.Controllers
     {
         private Model2 db = new Model2();
 
-
-
-
         [HttpPost]
         [Route("api/Logins/Refresh")]
         [ResponseType(typeof(LoginToken))]
@@ -42,24 +39,17 @@ namespace SistemaDeEstudos.Controllers
             novo.End = novo.Start.AddHours(1);
             novo.Token = Encrypt.getRandomString() + novo.IdUser;
             novo.Reset_token = Encrypt.getRandomString() + novo.IdUser;
-
             IEnumerable<LoginToken> oldTokens = db.LoginTokens.Where(x => x.IdUser == novo.IdUser);
             db.LoginTokens.RemoveRange(oldTokens);
-
             db.LoginTokens.Add(novo);
             db.SaveChanges();
-
             return Ok(novo);
-
-
         }
-
-
         //[Route("api/Logins/Login")]
+        [HttpPost]
         [ResponseType(typeof(LoginToken))]
         public async Task<IHttpActionResult> PostLogin(LoginModel l)
         {
-       
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -69,7 +59,6 @@ namespace SistemaDeEstudos.Controllers
             {
                 return Unauthorized();
             }
-
             IEnumerable<LoginToken> oldTokens = db.LoginTokens.Where(x => x.IdUser == login.IdUser);
             db.LoginTokens.RemoveRange(oldTokens);
             System.Diagnostics.Debug.WriteLine(oldTokens);
@@ -112,86 +101,11 @@ namespace SistemaDeEstudos.Controllers
                 // TimeZoneInfo.FindSystemTimeZoneById("065"));
                 db.LoginTokens.Add(token);
                 await db.SaveChangesAsync();
-
-                System.Diagnostics.Debug.WriteLine(Request.Headers.GetValues("Authorization").ElementAt(0));
-
-
-           
+                System.Diagnostics.Debug.WriteLine(Request.Headers.GetValues("Authorization").ElementAt(0));         
     */
-
-
-
-
-
          //   }
          //   return BadRequest("Credenciais erradas");
           }
-
-/*
-        // PUT: api/Logins/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutLogin(int id, Login login)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != login.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(login).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LoginExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-        */
-        // POST: api/Logins
-        //[ResponseType(typeof(Login))]
-    /*    public async Task<IHttpActionResult> PostLogin(Login login)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            db.Logins.Add(login);
-            await db.SaveChangesAsync();
-            return CreatedAtRoute("DefaultApi", new { id = login.Id }, login);
-        }*/
-
-        // DELETE: api/Logins/5
-   /*     [ResponseType(typeof(Login))]
-        public async Task<IHttpActionResult> DeleteLogin(int id)
-        {
-            Login login = await db.Logins.FindAsync(id);
-            if (login == null)
-            {
-                return NotFound();
-            }
-
-            db.Logins.Remove(login);
-            await db.SaveChangesAsync();
-
-            return Ok(login);
-        }
-        */
         protected override void Dispose(bool disposing)
         {
             if (disposing)

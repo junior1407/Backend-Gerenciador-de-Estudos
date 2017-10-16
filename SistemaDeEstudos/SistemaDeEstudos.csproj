@@ -75,6 +75,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -84,6 +87,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -165,18 +171,17 @@
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\LoginTokensController.cs" />
     <Compile Include="Controllers\SessionParticipantsController.cs" />
-    <Compile Include="Controllers\StudentGradesController.cs" />
+    <Compile Include="Controllers\StudentSubjectsController.cs" />
     <Compile Include="Controllers\StudySessionsController.cs" />
-    <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TimesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710080311359_Initial.cs" />
-    <Compile Include="Migrations\201710080311359_Initial.Designer.cs">
-      <DependentUpon>201710080311359_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201710131740051_Initial.cs" />
+    <Compile Include="Migrations\201710131740051_Initial.Designer.cs">
+      <DependentUpon>201710131740051_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -184,8 +189,7 @@
     <Compile Include="Models\Model2.cs" />
     <Compile Include="Models\RegisterInformationModel.cs" />
     <Compile Include="Models\SessionParticipants.cs" />
-    <Compile Include="Models\StudentGrade.cs" />
-    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\StudentSubject.cs" />
     <Compile Include="Models\Times.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\StudySession.cs" />
@@ -212,8 +216,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710080311359_Initial.resx">
-      <DependentUpon>201710080311359_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710131740051_Initial.resx">
+      <DependentUpon>201710131740051_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

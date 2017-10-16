@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SistemaDeEstudos.Models;
+using SistemaDeEstudos.src;
 
 namespace SistemaDeEstudos.Controllers
 {
@@ -18,90 +19,44 @@ namespace SistemaDeEstudos.Controllers
         private Model2 db = new Model2();
 
         // GET: api/Times
-        public IQueryable<Times> GetTimes()
+        public async Task<IHttpActionResult> GetTimes()
         {
-            return db.Times;
-        }
-
-        // GET: api/Times/5
-        [ResponseType(typeof(Times))]
-        public async Task<IHttpActionResult> GetTimes(int id)
-        {
-            Times times = await db.Times.FindAsync(id);
-            if (times == null)
+            try
             {
-                return NotFound();
+                string token = Request.Headers.GetValues("Authorization").ElementAt(0);
+
+                User u = Encrypt.getUser(token, db);
+                System.Diagnostics.Debug.WriteLine("Token" + token);
+                System.Diagnostics.Debug.WriteLine("User:" + u);
+                if (u == default(User))
+                {
+                    return Unauthorized();
+                }
+                IEnumerable<Times> times = db.Times.Where(x => x.idUser == u.Id);
+                return Ok(times.ToList());
             }
-
-            return Ok(times);
-        }
-
-        // PUT: api/Times/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutTimes(int id, Times times)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != times.Id)
+            catch (InvalidOperationException e)
             {
                 return BadRequest();
             }
-
-            db.Entry(times).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TimesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
-
+     
         // POST: api/Times
-        [ResponseType(typeof(Times))]
-        public async Task<IHttpActionResult> PostTimes(Times times)
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PostTimes(IEnumerable<Times> times)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Times.Add(times);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = times.Id }, times);
+            //    db.Times.Add(times);
+            //  await db.SaveChangesAsync();
+            return Ok();
+            //return CreatedAtRoute("DefaultApi", new { id = times.Id }, times);
         }
 
-        // DELETE: api/Times/5
-        [ResponseType(typeof(Times))]
-        public async Task<IHttpActionResult> DeleteTimes(int id)
-        {
-            Times times = await db.Times.FindAsync(id);
-            if (times == null)
-            {
-                return NotFound();
-            }
-
-            db.Times.Remove(times);
-            await db.SaveChangesAsync();
-
-            return Ok(times);
-        }
-
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

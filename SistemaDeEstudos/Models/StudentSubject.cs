@@ -8,7 +8,7 @@ using System.Web;
 
 namespace SistemaDeEstudos.Models
 {
-    public class StudentGrade
+    public class StudentSubject
     {
         [Key, JsonIgnore]
         public int Id { get; set; }
@@ -20,9 +20,6 @@ namespace SistemaDeEstudos.Models
 
         [Required]
         public int Grade { get; set; }
-        [JsonIgnore]
-        public int IdSubject { get; set; }
-        [ForeignKey("IdSubject")]
-        public virtual Subject subject { get; set; }
+        public string Subject { get; set; }
     }
 }

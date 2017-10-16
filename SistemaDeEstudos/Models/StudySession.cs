@@ -23,9 +23,9 @@ namespace SistemaDeEstudos.Models
         [ForeignKey("IdUser"), JsonIgnore]
         public virtual User Responsible { get; set; }
         
-        public int IdSubject { get; set; }
-        [ForeignKey("IdSubject"), JsonIgnore]
-        public virtual Subject Subject { get; set; }
+        public int IdStudentSubject { get; set; }
+        [ForeignKey("IdStudentSubject"), JsonIgnore]
+        public virtual StudentSubject  Subject { get; set; }
 
 
 

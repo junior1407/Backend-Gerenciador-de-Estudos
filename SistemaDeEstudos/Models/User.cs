@@ -23,6 +23,6 @@ namespace SistemaDeEstudos.Models
 
         //    public virtual ICollection<Times> Times { get; set; }
         [JsonIgnore]
-        public virtual ICollection<StudentGrade> Grades { get; set; }
+        public virtual ICollection<StudentSubject> Grades { get; set; }
     }   
 }

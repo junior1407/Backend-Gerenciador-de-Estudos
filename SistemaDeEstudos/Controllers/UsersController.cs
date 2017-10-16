@@ -16,14 +16,10 @@ namespace SistemaDeEstudos.Controllers
     public class UsersController : ApiController
     {
         private Model2 db = new Model2();
-
-        // GET: api/Users
         public IQueryable<User> GetUsers()
         {
             return db.Users;
         }
-
-        // GET: api/Users/5
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(int id)
         {
@@ -32,10 +28,8 @@ namespace SistemaDeEstudos.Controllers
             {
                 return NotFound();
             }
-
             return Ok(user);
         }
-
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(int id, User user)
@@ -44,14 +38,11 @@ namespace SistemaDeEstudos.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             if (id != user.Id)
             {
                 return BadRequest();
             }
-
             db.Entry(user).State = EntityState.Modified;
-
             try
             {
                 await db.SaveChangesAsync();
@@ -65,12 +56,10 @@ namespace SistemaDeEstudos.Controllers
                 else
                 {
                     throw;
-                }
+               }
             }
-
             return StatusCode(HttpStatusCode.NoContent);
         }
-
         // POST: api/Users
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(RegisterInformationModel r)
@@ -82,17 +71,15 @@ namespace SistemaDeEstudos.Controllers
             User u = new Models.User { Avatar = r.Avatar,
                 idRedeSocial = r.idRedeSocial,
                 Nickname = r.Nickname };
+            if (db.Logins.Where(x=>x.Username == r.Username).Count()>0)
+            {
+                return BadRequest();
+            }
             db.Users.Add(u);
-            //db.Users.FirstOrDefault(x => x.Id == '');
-           
-            //  db.Users.Add(user);
-          //  await db.SaveChangesAsync();
+            await db.SaveChangesAsync();
             System.Diagnostics.Debug.WriteLine(u.Id);
-             return CreatedAtRoute("DefaultApi", new { }, u); //new { id = user.Id }, user);
-         //   return CreatedAtRoute("DefaultApi", new { id = login.Id }, login);
+            return CreatedAtRoute("DefaultApi", new { }, u); //new { id = user.Id }, user);
         }   
-        //return CreatedAtRoute("DefaultApi", new { controller = "messages", id = message.Id }, message);
-
 
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
@@ -109,7 +96,6 @@ namespace SistemaDeEstudos.Controllers
 
             return Ok(user);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -32,28 +32,17 @@ namespace SistemaDeEstudos.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.StudentGrades",
+                "dbo.StudentSubjects",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         IdUser = c.Int(nullable: false),
                         Grade = c.Int(nullable: false),
-                        IdSubject = c.Int(nullable: false),
+                        Subject = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Subjects", t => t.IdSubject, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.IdUser, cascadeDelete: true)
-                .Index(t => t.IdUser)
-                .Index(t => t.IdSubject);
-            
-            CreateTable(
-                "dbo.Subjects",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(unicode: false),
-                    })
-                .PrimaryKey(t => t.Id);
+                .Index(t => t.IdUser);
             
             CreateTable(
                 "dbo.LoginTokens",
@@ -93,13 +82,13 @@ namespace SistemaDeEstudos.Migrations
                         start = c.DateTime(nullable: false, precision: 0),
                         end = c.DateTime(nullable: false, precision: 0),
                         IdUser = c.Int(nullable: false),
-                        IdSubject = c.Int(nullable: false),
+                        IdStudentSubject = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Users", t => t.IdUser, cascadeDelete: true)
-                .ForeignKey("dbo.Subjects", t => t.IdSubject, cascadeDelete: true)
+                .ForeignKey("dbo.StudentSubjects", t => t.IdStudentSubject, cascadeDelete: true)
                 .Index(t => t.IdUser)
-                .Index(t => t.IdSubject);
+                .Index(t => t.IdStudentSubject);
             
             CreateTable(
                 "dbo.Times",
@@ -124,29 +113,26 @@ namespace SistemaDeEstudos.Migrations
             DropForeignKey("dbo.Times", "idUser", "dbo.Users");
             DropForeignKey("dbo.Times", "idSession", "dbo.StudySessions");
             DropForeignKey("dbo.SessionParticipants", "IdStudySession", "dbo.StudySessions");
-            DropForeignKey("dbo.StudySessions", "IdSubject", "dbo.Subjects");
+            DropForeignKey("dbo.StudySessions", "IdStudentSubject", "dbo.StudentSubjects");
             DropForeignKey("dbo.StudySessions", "IdUser", "dbo.Users");
             DropForeignKey("dbo.SessionParticipants", "ParticipantID", "dbo.Users");
             DropForeignKey("dbo.LoginTokens", "IdUser", "dbo.Users");
             DropForeignKey("dbo.Logins", "IdUser", "dbo.Users");
-            DropForeignKey("dbo.StudentGrades", "IdUser", "dbo.Users");
-            DropForeignKey("dbo.StudentGrades", "IdSubject", "dbo.Subjects");
+            DropForeignKey("dbo.StudentSubjects", "IdUser", "dbo.Users");
             DropIndex("dbo.Times", new[] { "idSession" });
             DropIndex("dbo.Times", new[] { "idUser" });
-            DropIndex("dbo.StudySessions", new[] { "IdSubject" });
+            DropIndex("dbo.StudySessions", new[] { "IdStudentSubject" });
             DropIndex("dbo.StudySessions", new[] { "IdUser" });
             DropIndex("dbo.SessionParticipants", new[] { "ParticipantID" });
             DropIndex("dbo.SessionParticipants", new[] { "IdStudySession" });
             DropIndex("dbo.LoginTokens", new[] { "IdUser" });
-            DropIndex("dbo.StudentGrades", new[] { "IdSubject" });
-            DropIndex("dbo.StudentGrades", new[] { "IdUser" });
+            DropIndex("dbo.StudentSubjects", new[] { "IdUser" });
             DropIndex("dbo.Logins", new[] { "IdUser" });
             DropTable("dbo.Times");
             DropTable("dbo.StudySessions");
             DropTable("dbo.SessionParticipants");
             DropTable("dbo.LoginTokens");
-            DropTable("dbo.Subjects");
-            DropTable("dbo.StudentGrades");
+            DropTable("dbo.StudentSubjects");
             DropTable("dbo.Users");
             DropTable("dbo.Logins");
         }

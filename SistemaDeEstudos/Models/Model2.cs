@@ -23,9 +23,7 @@ namespace SistemaDeEstudos.Models
 
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.User> Users { get; set; }
 
-        public System.Data.Entity.DbSet<SistemaDeEstudos.Models.Subject> Subjects { get; set; }
-
-        public System.Data.Entity.DbSet<SistemaDeEstudos.Models.StudentGrade> StudentGrades { get; set; }
+        public System.Data.Entity.DbSet<SistemaDeEstudos.Models.StudentSubject> StudentSubjects { get; set; }
 
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.SessionParticipants> SessionParticipants { get; set; }
 
