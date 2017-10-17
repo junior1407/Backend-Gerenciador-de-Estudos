@@ -26,8 +26,8 @@ namespace SistemaDeEstudos.Controllers
                 string token = Request.Headers.GetValues("Authorization").ElementAt(0);
 
                 User u = Encrypt.getUser(token, db);
-                System.Diagnostics.Debug.WriteLine("Token" + token);
-                System.Diagnostics.Debug.WriteLine("User:" + u);
+              //  System.Diagnostics.Debug.WriteLine("Token" + token);
+               // System.Diagnostics.Debug.WriteLine("User:" + u);
                 if (u == default(User))
                 {
                     return Unauthorized();

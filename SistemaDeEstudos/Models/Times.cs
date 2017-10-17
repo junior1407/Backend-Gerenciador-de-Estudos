@@ -20,10 +20,10 @@ namespace SistemaDeEstudos.Models
         public int idUser{ get; set; }
         [ForeignKey("idUser"), JsonIgnore]
         public virtual User user { get; set; }
-        [JsonIgnore]
-        public int idSession { get; set; }
+       // [JsonIgnore]
+     /*   public int idSession { get; set; }
         [ForeignKey("idSession"),   ]
-        public virtual StudySession Session { get; set; }
+        public virtual StudySession Session { get; set; }*/
 
     }
 }

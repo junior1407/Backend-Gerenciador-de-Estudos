@@ -107,6 +107,8 @@ namespace SistemaDeEstudos.Controllers
                 {
                     return Unauthorized();
                 }
+
+                System.Diagnostics.Debug.WriteLine(db.StudentSubjects.Where(x => ((x.IdUser == u.Id) && (x.Subject == s.Subject))));
                 StudentSubject g = await db.StudentSubjects.FirstOrDefaultAsync(x => ((x.IdUser == u.Id) && ( x.Subject==s.Subject)  ));
                 if (g == default(StudentSubject))
                 {
