@@ -77,6 +77,8 @@ namespace SistemaDeEstudos.Controllers
             }
             db.Users.Add(u);
             await db.SaveChangesAsync();
+            db.Logins.Add(new Login{IdUser = u.Id, Username = r.Username, Password = r.Password });
+            await db.SaveChangesAsync();
             System.Diagnostics.Debug.WriteLine(u.Id);
             return CreatedAtRoute("DefaultApi", new { }, u); //new { id = user.Id }, user);
         }   

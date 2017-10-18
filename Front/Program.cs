@@ -11,12 +11,17 @@ namespace Front
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+        public static string url = "http://gerenciadorestudos.azurewebsites.net/api/";
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+              Application.Run(new Form1());
+         //   Application.Run(new Config());
+            // Application.Run(new Main());
         }
     }
 }

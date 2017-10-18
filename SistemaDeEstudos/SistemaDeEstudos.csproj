@@ -179,11 +179,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710131740051_Initial.cs" />
-    <Compile Include="Migrations\201710131740051_Initial.Designer.cs">
-      <DependentUpon>201710131740051_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201710180146055_Initial.cs" />
+    <Compile Include="Migrations\201710180146055_Initial.Designer.cs">
+      <DependentUpon>201710180146055_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DaysofTheWeek.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginToken.cs" />
     <Compile Include="Models\Model2.cs" />
@@ -216,8 +217,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710131740051_Initial.resx">
-      <DependentUpon>201710131740051_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710180146055_Initial.resx">
+      <DependentUpon>201710180146055_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

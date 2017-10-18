@@ -8,6 +8,15 @@ namespace SistemaDeEstudos.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.DaysofTheWeeks",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        nome = c.String(nullable: false, unicode: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Logins",
                 c => new
                     {
@@ -98,20 +107,20 @@ namespace SistemaDeEstudos.Migrations
                         Start = c.String(nullable: false, unicode: false),
                         End = c.String(nullable: false, unicode: false),
                         idUser = c.Int(nullable: false),
-                        idSession = c.Int(nullable: false),
+                        idDay = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.StudySessions", t => t.idSession, cascadeDelete: true)
+                .ForeignKey("dbo.DaysofTheWeeks", t => t.idDay, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.idUser, cascadeDelete: true)
                 .Index(t => t.idUser)
-                .Index(t => t.idSession);
+                .Index(t => t.idDay);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Times", "idUser", "dbo.Users");
-            DropForeignKey("dbo.Times", "idSession", "dbo.StudySessions");
+            DropForeignKey("dbo.Times", "idDay", "dbo.DaysofTheWeeks");
             DropForeignKey("dbo.SessionParticipants", "IdStudySession", "dbo.StudySessions");
             DropForeignKey("dbo.StudySessions", "IdStudentSubject", "dbo.StudentSubjects");
             DropForeignKey("dbo.StudySessions", "IdUser", "dbo.Users");
@@ -119,7 +128,7 @@ namespace SistemaDeEstudos.Migrations
             DropForeignKey("dbo.LoginTokens", "IdUser", "dbo.Users");
             DropForeignKey("dbo.Logins", "IdUser", "dbo.Users");
             DropForeignKey("dbo.StudentSubjects", "IdUser", "dbo.Users");
-            DropIndex("dbo.Times", new[] { "idSession" });
+            DropIndex("dbo.Times", new[] { "idDay" });
             DropIndex("dbo.Times", new[] { "idUser" });
             DropIndex("dbo.StudySessions", new[] { "IdStudentSubject" });
             DropIndex("dbo.StudySessions", new[] { "IdUser" });
@@ -135,6 +144,7 @@ namespace SistemaDeEstudos.Migrations
             DropTable("dbo.StudentSubjects");
             DropTable("dbo.Users");
             DropTable("dbo.Logins");
+            DropTable("dbo.DaysofTheWeeks");
         }
     }
 }
