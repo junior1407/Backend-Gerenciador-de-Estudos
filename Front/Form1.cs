@@ -49,7 +49,7 @@ namespace Front
                 }
                 catch(UnauthorizedAccessException f)
                 {
-                   
+                    MessageBox.Show("Wrong Credentials!");
                 }
                 catch(ApplicationException g)
                 {
@@ -96,7 +96,7 @@ namespace Front
                 {
                     Requests.Register(regis);
                     tabControl1.SelectedIndex = 0;
-                }
+                    MessageBox.Show("Success!");                }
                 catch (ArgumentException d)
                 {
                     MessageBox.Show("Something happenned...");

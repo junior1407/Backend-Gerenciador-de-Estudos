@@ -27,7 +27,26 @@ namespace Front
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Config x = new Config();
+            if (panel1.Controls.Count==1)
+            {
+                panel1.Controls.RemoveAt(0);
+            }
+                      Config x = new Config();
+            x.TopLevel = false;
+            x.AutoScroll = true;
+            x.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            x.Dock = DockStyle.Fill;
+            panel1.Controls.Add(x);
+            x.Show();
+        }
+
+        private void dashboardBtn_Click(object sender, EventArgs e)
+        {
+            if (panel1.Controls.Count == 1)
+            {
+                panel1.Controls.RemoveAt(0);
+            }
+            Dashboard x = new Dashboard();
             x.TopLevel = false;
             x.AutoScroll = true;
             x.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

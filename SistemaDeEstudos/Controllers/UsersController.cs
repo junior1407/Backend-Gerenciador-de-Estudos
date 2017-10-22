@@ -77,6 +77,7 @@ namespace SistemaDeEstudos.Controllers
             }
             db.Users.Add(u);
             await db.SaveChangesAsync();
+            db.StudentSubjects.Add(new StudentSubject() { Grade = 0,IdUser=u.Id, Subject="none" });
             db.Logins.Add(new Login{IdUser = u.Id, Username = r.Username, Password = r.Password });
             await db.SaveChangesAsync();
             System.Diagnostics.Debug.WriteLine(u.Id);

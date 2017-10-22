@@ -13,7 +13,7 @@ namespace SistemaDeEstudos.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201710180146055_Initial"; }
+            get { return "201710211920001_Initial"; }
         }
         
         string IMigrationMetadata.Source

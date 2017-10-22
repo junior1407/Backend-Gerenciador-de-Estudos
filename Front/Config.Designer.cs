@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.newSubject = new System.Windows.Forms.TextBox();
             this.newGrade = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.configBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hour_start = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.End_Hour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.submitBtn = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.end = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.day = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -91,42 +89,50 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // dataGridView1
+            // submitBtn
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.hour_start,
-            this.End_Hour,
+            this.submitBtn.Location = new System.Drawing.Point(496, 270);
+            this.submitBtn.Name = "submitBtn";
+            this.submitBtn.Size = new System.Drawing.Size(75, 23);
+            this.submitBtn.TabIndex = 8;
+            this.submitBtn.Text = "Submit";
+            this.submitBtn.UseVisualStyleBackColor = true;
+            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.start,
+            this.end,
             this.day});
-            this.dataGridView1.Location = new System.Drawing.Point(26, 270);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(439, 150);
-            this.dataGridView1.TabIndex = 7;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.Location = new System.Drawing.Point(50, 270);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(386, 150);
+            this.dataGridView2.TabIndex = 9;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // configBindingSource
+            // start
             // 
-            this.configBindingSource.DataSource = typeof(Front.Config);
-            this.configBindingSource.CurrentChanged += new System.EventHandler(this.configBindingSource_CurrentChanged);
+            this.start.HeaderText = "Start Hour";
+            this.start.Name = "start";
             // 
-            // hour_start
+            // end
             // 
-            this.hour_start.Frozen = true;
-            this.hour_start.HeaderText = "Start Hour";
-            this.hour_start.Name = "hour_start";
-            // 
-            // End_Hour
-            // 
-            this.End_Hour.Frozen = true;
-            this.End_Hour.HeaderText = "End Hour";
-            this.End_Hour.Name = "End_Hour";
+            this.end.HeaderText = "End Hour";
+            this.end.Name = "end";
             // 
             // day
             // 
-            this.day.DataSource = this.configBindingSource;
-            this.day.Frozen = true;
-            this.day.HeaderText = "Day of The Week";
+            this.day.HeaderText = "Day of the Week";
+            this.day.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"});
             this.day.Name = "day";
             // 
             // Config
@@ -134,7 +140,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 519);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.newGrade);
@@ -142,8 +149,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "Config";
             this.Text = "Config";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,10 +162,10 @@
         private System.Windows.Forms.TextBox newGrade;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hour_start;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End_Hour;
+        private System.Windows.Forms.Button submitBtn;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn end;
         private System.Windows.Forms.DataGridViewComboBoxColumn day;
-        private System.Windows.Forms.BindingSource configBindingSource;
     }
 }

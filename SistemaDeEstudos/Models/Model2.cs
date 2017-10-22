@@ -8,7 +8,8 @@ namespace SistemaDeEstudos.Models
     public partial class Model2 : DbContext
     {
         public Model2()
-            : base("name=Model2")
+          //   : base("name=Model2")
+          : base("Model2")
         {
         }
 
@@ -16,7 +17,7 @@ namespace SistemaDeEstudos.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
-
+        public System.Data.Entity.DbSet<SistemaDeEstudos.Models.DaysofTheWeek> DaysofTheWeeks { get; set; }
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.Times> Times { get; set; }
 
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.StudySession> StudySessions { get; set; }
@@ -29,6 +30,6 @@ namespace SistemaDeEstudos.Models
 
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.Login> Logins { get; set; }
         public System.Data.Entity.DbSet<SistemaDeEstudos.Models.LoginToken> LoginTokens { get; set; }
-        public System.Data.Entity.DbSet<SistemaDeEstudos.Models.DaysofTheWeek> DaysoftheWeek { get; set; }
+
     }
 }

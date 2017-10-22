@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Web.Script.Serialization;
 namespace Front.Model
 {
     public class StudentSubject
@@ -15,5 +15,7 @@ namespace Front.Model
         {
             return Subject + ", " + Grade;
         }
+        [ScriptIgnore]
+        public StudentSubject This { get { return this; } }
     }
 }

@@ -114,6 +114,10 @@ namespace SistemaDeEstudos.Controllers
                 {
                     return BadRequest();
                 }
+                if (g.Subject == "none")
+                {
+                    return BadRequest();
+                }
                 db.StudentSubjects.Remove(g);
                 await db.SaveChangesAsync();
                 return Ok();

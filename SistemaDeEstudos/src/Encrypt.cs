@@ -38,13 +38,14 @@ namespace SistemaDeEstudos.src
 
           
             LoginToken e = db.LoginTokens.FirstOrDefault(z => z.Token == token);
-           DateTime now = DateTime.UtcNow;
-            System.Diagnostics.Debug.WriteLine("LoginToken:" +e);
-            System.Diagnostics.Debug.WriteLine("now:" + now+ "e now: "+e.End);
-            if (e == default(LoginToken) || (now > e.End ))
+            DateTime now = DateTime.UtcNow;
+            if (e == default(LoginToken) || (now > e.End))
             {
                 return default(User);
             }
+            System.Diagnostics.Debug.WriteLine("LoginToken:" +e);
+            System.Diagnostics.Debug.WriteLine("now:" + now+ "e now: "+e.End);
+
             User x = e.Student;
             return e.Student;
         }

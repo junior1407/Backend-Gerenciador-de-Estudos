@@ -36,17 +36,17 @@
             this.loginTab = new System.Windows.Forms.TabPage();
             this.usernameText1 = new System.Windows.Forms.TextBox();
             this.registerTab = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.registerBtn = new System.Windows.Forms.Button();
             this.idRedeSocial = new System.Windows.Forms.TextBox();
             this.avatar = new System.Windows.Forms.TextBox();
             this.nickname = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.registerBtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.loginTab.SuspendLayout();
             this.registerTab.SuspendLayout();
@@ -68,6 +68,7 @@
             this.passwordText1.Name = "passwordText1";
             this.passwordText1.Size = new System.Drawing.Size(100, 22);
             this.passwordText1.TabIndex = 2;
+            this.passwordText1.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -141,6 +142,63 @@
             this.registerTab.Text = "Register";
             this.registerTab.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(97, 224);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 17);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Id Rede Social";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(97, 196);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Avatar";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(97, 168);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Nickname";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(97, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Password";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(97, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Login";
+            // 
+            // registerBtn
+            // 
+            this.registerBtn.Location = new System.Drawing.Point(214, 264);
+            this.registerBtn.Name = "registerBtn";
+            this.registerBtn.Size = new System.Drawing.Size(75, 23);
+            this.registerBtn.TabIndex = 5;
+            this.registerBtn.Text = "Register";
+            this.registerBtn.UseVisualStyleBackColor = true;
+            this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click_1);
+            // 
             // idRedeSocial
             // 
             this.idRedeSocial.Location = new System.Drawing.Point(202, 219);
@@ -176,63 +234,6 @@
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(100, 22);
             this.usernameBox.TabIndex = 0;
-            // 
-            // registerBtn
-            // 
-            this.registerBtn.Location = new System.Drawing.Point(214, 264);
-            this.registerBtn.Name = "registerBtn";
-            this.registerBtn.Size = new System.Drawing.Size(75, 23);
-            this.registerBtn.TabIndex = 5;
-            this.registerBtn.Text = "Register";
-            this.registerBtn.UseVisualStyleBackColor = true;
-            this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click_1);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Login";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(97, 140);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Password";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(97, 168);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Nickname";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(97, 196);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Avatar";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(97, 224);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 17);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Id Rede Social";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // Form1
             // 

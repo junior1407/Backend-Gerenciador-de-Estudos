@@ -23,9 +23,12 @@ namespace SistemaDeEstudos.Models
 
         [JsonIgnore]
         public int idDay { get; set; }
-        [ForeignKey("idDay"), JsonIgnore]
+        [ForeignKey("idDay")]
         public virtual DaysofTheWeek day { get; set; }
-
+        [JsonIgnore]
+        public int idSubject { get; set; }
+        [ForeignKey("idSubject")]
+        public virtual StudentSubject subject { get; set; }
         // [JsonIgnore]
         /*   public int idSession { get; set; }
            [ForeignKey("idSession"),   ]

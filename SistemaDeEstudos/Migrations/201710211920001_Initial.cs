@@ -108,18 +108,22 @@ namespace SistemaDeEstudos.Migrations
                         End = c.String(nullable: false, unicode: false),
                         idUser = c.Int(nullable: false),
                         idDay = c.Int(nullable: false),
+                        idSubject = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.DaysofTheWeeks", t => t.idDay, cascadeDelete: true)
+                .ForeignKey("dbo.StudentSubjects", t => t.idSubject, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.idUser, cascadeDelete: true)
                 .Index(t => t.idUser)
-                .Index(t => t.idDay);
+                .Index(t => t.idDay)
+                .Index(t => t.idSubject);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Times", "idUser", "dbo.Users");
+            DropForeignKey("dbo.Times", "idSubject", "dbo.StudentSubjects");
             DropForeignKey("dbo.Times", "idDay", "dbo.DaysofTheWeeks");
             DropForeignKey("dbo.SessionParticipants", "IdStudySession", "dbo.StudySessions");
             DropForeignKey("dbo.StudySessions", "IdStudentSubject", "dbo.StudentSubjects");
@@ -128,6 +132,7 @@ namespace SistemaDeEstudos.Migrations
             DropForeignKey("dbo.LoginTokens", "IdUser", "dbo.Users");
             DropForeignKey("dbo.Logins", "IdUser", "dbo.Users");
             DropForeignKey("dbo.StudentSubjects", "IdUser", "dbo.Users");
+            DropIndex("dbo.Times", new[] { "idSubject" });
             DropIndex("dbo.Times", new[] { "idDay" });
             DropIndex("dbo.Times", new[] { "idUser" });
             DropIndex("dbo.StudySessions", new[] { "IdStudentSubject" });
