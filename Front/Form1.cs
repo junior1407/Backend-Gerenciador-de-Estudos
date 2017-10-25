@@ -35,12 +35,6 @@ namespace Front
                 try
                 {
                     token= Requests.Login(usernameText1.Text, passwordText1.Text);
-                    // Main novoform = new Main(token);
-
-                    // novoform.Show();
-                    //   this.Hide();
-
-
                     this.Close();
                     Thread t = new Thread(OpenMain);
                     t.SetApartmentState(ApartmentState.STA);
@@ -56,15 +50,8 @@ namespace Front
                     MessageBox.Show("The server is offline!");
                 }
 
-            }
-            
-           
-
-
-
-
+            } 
         }
-
      
         private void registerBtn_Click(object sender, EventArgs e)
         {

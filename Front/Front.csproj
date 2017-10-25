@@ -114,6 +114,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\Config.datasource" />
     <None Include="Properties\DataSources\Front.Model.StudentSubject.datasource" />
@@ -133,6 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Book-PNG-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

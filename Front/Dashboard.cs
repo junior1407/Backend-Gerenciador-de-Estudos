@@ -14,7 +14,7 @@ namespace Front
 {
     public partial class Dashboard : Form
     {
-
+        List<DataGridViewRow> listRows = new List<DataGridViewRow>();
         List<StudentSubject> subjectsList = new List<StudentSubject>();
         public void setDataGridOptions()
         {
@@ -27,22 +27,15 @@ namespace Front
             column.ValueMember = "This";
             
         }
-
         public void setDataGridRows()
         {
             
            List<Times> times = Requests.GetTimes();
             List<DataGridViewRow> rows = new List<DataGridViewRow>();
-
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            //  x.cl
             foreach (Times t in times)
             {
-
-              
                 dataGridView1.Rows.Add(t.day, t.Start, t.End, null);
-                //dayoftheweek, string ,string, StudentSubject
 
                 StudentSubject curr = subjectsList.FirstOrDefault(x => x.Subject == t.subject.Subject); 
                 if (curr==default(StudentSubject))
@@ -53,33 +46,12 @@ namespace Front
                 {
                     t.subject = curr;
                 }
-
-                /*if (!(subjectsList.Any(x => x.Subject == t.subject.Subject)))
-                {
-                    subjectsList.Add(t.subject);
-                }*/
-
-             /*   if (subjectsList.Contains(t.subject) == false)
-                {
-                        subjectsList.Add(t.subject);
-                }*/
                 setDataGridOptions();
+                
                 dataGridView1.Rows[0].Cells[3].Value = t.subject;
-                //  dataGridView1.Rows[0].Cells[4].Value = t.subject;
-                //DataGridViewRow curr = dataGridView1      .Clone() as DataGridViewRow;
-
-                //  dataGridView1.Rows.RemoveAt(0);
-                /*  curr.Cells[0].Value = null;
-                  curr.Cells[1].Value = t.day;
-                  curr.Cells[2].Value = t.Start;
-                  curr.Cells[3].Value = t.End;
-                  curr.Cells[4].Value = t.subject;
-                  dataGridView1.Rows.Add(curr);*/
             }
-
            
         }
-
         public void addMissing()
         {
             List<StudentSubject> temp = Requests.GetSubject();
@@ -96,23 +68,15 @@ namespace Front
         public Dashboard()
         {
             InitializeComponent();
-
-
-          //  Main.token = Requests.Login("1", "1");
-       //     dataGridView1.RowTemplate = new DataGridViewRow
-         //  subjectsList =Requests.GetSubject();
-       //     setDataGridOptions();
             setDataGridRows();
             addMissing();
             setDataGridOptions();
-
-         //   setDataGridOptions();
         }
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          
+                     
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -125,7 +89,6 @@ namespace Front
                 for (int i = 0; i < dataGridView1.Rows.Count ; i++)
                 {
                     DataGridViewRow d = dataGridView1.Rows[i];
-                 //   dayoftheweek, string ,string, StudentSubject
                     listToAdd.Add(new Times() {  day=  d.Cells[0].Value as DaysofTheWeek, Start= d.Cells[1].Value.ToString(), End= d.Cells[2].Value.ToString(), subject= d.Cells[3].Value as StudentSubject});
                 }
 
@@ -136,6 +99,70 @@ namespace Front
             catch (NullReferenceException g)
             {
                 MessageBox.Show("Fill everything!");
+            }
+        }
+
+        private void getRows()
+        {
+            listRows.Clear();
+            foreach (DataGridViewRow curr in dataGridView1.Rows)
+            {
+                listRows.Add(curr);
+            }
+        }
+        private void fixSubjectsList()
+        {
+           StudentSubject none = subjectsList.FirstOrDefault(x => x.Subject == "none");
+            int pos = subjectsList.IndexOf(none);
+            subjectsList.Add(none);
+            subjectsList.RemoveAt(pos);
+        }
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            int i, j;
+            getRows();
+            fixSubjectsList();
+            float sumInverses=0;
+            int bestSubject = 0;
+            for (i = 0; i < subjectsList.Count - 1; i++)
+            {
+                if (subjectsList[i].Grade > subjectsList[bestSubject].Grade)
+                {
+                    bestSubject = i;
+                }
+                if (subjectsList[i].Grade != 0)
+                {
+                    sumInverses += (float)1 / (float)subjectsList[i].Grade;
+                }
+                else
+                {
+                    sumInverses += (float)1 / (float)0.1;
+                }
+            }
+            double k = listRows.Count / sumInverses;
+            int currRow = 0;
+           
+           
+            for(i=0; i< subjectsList.Count -1; i++)
+            {
+                int time_curr;
+                if (subjectsList[i].Grade==0)
+                {
+                    time_curr =(int) Math.Round((k *10));//   k / 0,1
+                }
+                else
+                {
+                    time_curr = (int)Math.Round(k / subjectsList[i].Grade);
+                }
+                for (j=currRow; j<currRow+time_curr;j++)
+                {
+                    listRows[j].Cells[3].Value = subjectsList[i];
+                }
+                currRow = j;
+            }
+            if (listRows[listRows.Count-1].Cells[3].Value== null)
+            {
+                listRows[listRows.Count - 1].Cells[3].Value = subjectsList[bestSubject];
             }
         }
     }

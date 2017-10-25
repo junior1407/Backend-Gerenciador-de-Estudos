@@ -30,12 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.timesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.end = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.timesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.generateBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -56,20 +57,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(601, 355);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(293, 432);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // timesBindingSource
-            // 
-            this.timesBindingSource.DataSource = typeof(Front.Model.Times);
             // 
             // day
             // 
@@ -94,11 +81,36 @@
             this.subject.HeaderText = "Subject";
             this.subject.Name = "subject";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(293, 432);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // timesBindingSource
+            // 
+            this.timesBindingSource.DataSource = typeof(Front.Model.Times);
+            // 
+            // generateBtn
+            // 
+            this.generateBtn.Location = new System.Drawing.Point(393, 432);
+            this.generateBtn.Name = "generateBtn";
+            this.generateBtn.Size = new System.Drawing.Size(123, 23);
+            this.generateBtn.TabIndex = 2;
+            this.generateBtn.Text = "Generate Scnedule";
+            this.generateBtn.UseVisualStyleBackColor = true;
+            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 519);
+            this.Controls.Add(this.generateBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Dashboard";
@@ -118,5 +130,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn start;
         private System.Windows.Forms.DataGridViewTextBoxColumn end;
         private System.Windows.Forms.DataGridViewComboBoxColumn subject;
+        private System.Windows.Forms.Button generateBtn;
     }
 }

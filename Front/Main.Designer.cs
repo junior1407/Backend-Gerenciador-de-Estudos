@@ -59,6 +59,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(846, 512);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // Main
             // 
@@ -70,6 +71,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Main";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
 
         }

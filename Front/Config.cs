@@ -94,20 +94,13 @@ namespace Front
                     {
                         MessageBox.Show("Shoot! Something Happenned");
                     }
-                 //   passwordText1.Text = "";
                 }
                 catch (ApplicationException g)
                 {
                     MessageBox.Show("The server is offline!");
                 }
-
-
-
-                //  list.Add(novo);
-                //   listBox1.DataSource = null;
-                //   listBox1.DataSource = list;
                 ResetList(); 
-                MessageBox.Show("Sucesso!");
+               
 
             }
         }

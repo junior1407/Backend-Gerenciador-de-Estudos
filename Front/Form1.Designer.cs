@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.logarBtn = new System.Windows.Forms.Button();
             this.passwordText1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,9 +48,13 @@
             this.nickname = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.loginTab.SuspendLayout();
             this.registerTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // logarBtn
@@ -100,6 +105,7 @@
             // 
             // loginTab
             // 
+            this.loginTab.Controls.Add(this.pictureBox1);
             this.loginTab.Controls.Add(this.usernameText1);
             this.loginTab.Controls.Add(this.label1);
             this.loginTab.Controls.Add(this.logarBtn);
@@ -123,6 +129,7 @@
             // 
             // registerTab
             // 
+            this.registerTab.Controls.Add(this.pictureBox2);
             this.registerTab.Controls.Add(this.label7);
             this.registerTab.Controls.Add(this.label6);
             this.registerTab.Controls.Add(this.label5);
@@ -235,6 +242,26 @@
             this.usernameBox.Size = new System.Drawing.Size(100, 22);
             this.usernameBox.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Front.Properties.Resources.book;
+            this.pictureBox1.Location = new System.Drawing.Point(113, 210);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(308, 191);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(325, 63);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(208, 192);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -248,6 +275,8 @@
             this.loginTab.PerformLayout();
             this.registerTab.ResumeLayout(false);
             this.registerTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,5 +302,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button registerBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

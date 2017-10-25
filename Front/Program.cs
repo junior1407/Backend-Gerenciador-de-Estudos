@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Front.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,10 +9,6 @@ namespace Front
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        /// 
         public static string url = "http://gerenciadorestudos.azurewebsites.net/api/";
         [STAThread]
         static void Main()
@@ -19,10 +16,10 @@ namespace Front
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-                 Application.Run(new Form1());
+                     Application.Run(new Form1());
             // Application.Run(new Config());
            // Application.Run(new Dashboard());
-            // Application.Run(new Main());
+         //    Application.Run(new Main(Requests.Login("1","1")));
         }
     }
 }
