@@ -35,8 +35,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.loginTab = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usernameText1 = new System.Windows.Forms.TextBox();
             this.registerTab = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,17 +50,16 @@
             this.nickname = new System.Windows.Forms.TextBox();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.loginTab.SuspendLayout();
-            this.registerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.registerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // logarBtn
             // 
+            this.logarBtn.ForeColor = System.Drawing.Color.Coral;
             this.logarBtn.Location = new System.Drawing.Point(219, 151);
             this.logarBtn.Name = "logarBtn";
             this.logarBtn.Size = new System.Drawing.Size(75, 23);
@@ -69,6 +70,7 @@
             // 
             // passwordText1
             // 
+            this.passwordText1.ForeColor = System.Drawing.Color.YellowGreen;
             this.passwordText1.Location = new System.Drawing.Point(356, 105);
             this.passwordText1.Name = "passwordText1";
             this.passwordText1.Size = new System.Drawing.Size(100, 22);
@@ -120,8 +122,19 @@
             this.loginTab.UseVisualStyleBackColor = true;
             this.loginTab.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Front.Properties.Resources.book;
+            this.pictureBox1.Location = new System.Drawing.Point(113, 210);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(308, 191);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // usernameText1
             // 
+            this.usernameText1.ForeColor = System.Drawing.Color.YellowGreen;
             this.usernameText1.Location = new System.Drawing.Point(64, 105);
             this.usernameText1.Name = "usernameText1";
             this.usernameText1.Size = new System.Drawing.Size(100, 22);
@@ -148,6 +161,16 @@
             this.registerTab.TabIndex = 1;
             this.registerTab.Text = "Register";
             this.registerTab.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(325, 63);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(208, 192);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
             // 
             // label7
             // 
@@ -198,6 +221,7 @@
             // 
             // registerBtn
             // 
+            this.registerBtn.ForeColor = System.Drawing.Color.Coral;
             this.registerBtn.Location = new System.Drawing.Point(214, 264);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(75, 23);
@@ -242,40 +266,21 @@
             this.usernameBox.Size = new System.Drawing.Size(100, 22);
             this.usernameBox.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Front.Properties.Resources.book;
-            this.pictureBox1.Location = new System.Drawing.Point(113, 210);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(308, 191);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(325, 63);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(208, 192);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(569, 437);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "\'";
             this.tabControl1.ResumeLayout(false);
             this.loginTab.ResumeLayout(false);
             this.loginTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.registerTab.ResumeLayout(false);
             this.registerTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 

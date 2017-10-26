@@ -35,6 +35,7 @@
             // 
             // button1
             // 
+            this.button1.ForeColor = System.Drawing.Color.Coral;
             this.button1.Location = new System.Drawing.Point(3, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 23);
@@ -45,6 +46,7 @@
             // 
             // dashboardBtn
             // 
+            this.dashboardBtn.ForeColor = System.Drawing.Color.Coral;
             this.dashboardBtn.Location = new System.Drawing.Point(90, 1);
             this.dashboardBtn.Name = "dashboardBtn";
             this.dashboardBtn.Size = new System.Drawing.Size(98, 23);

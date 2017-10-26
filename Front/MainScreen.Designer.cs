@@ -81,10 +81,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(814, 490);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainScreen";
-            this.Text = "Form3";
+            this.Text = "Main Screen";
             this.tabControl1.ResumeLayout(false);
             this.Configure.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -71,6 +71,7 @@
             // 
             // button2
             // 
+            this.button2.ForeColor = System.Drawing.Color.DarkGreen;
             this.button2.Location = new System.Drawing.Point(449, 126);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -81,7 +82,8 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(235, 80);
+            this.deleteBtn.ForeColor = System.Drawing.Color.Crimson;
+            this.deleteBtn.Location = new System.Drawing.Point(239, 115);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(75, 23);
             this.deleteBtn.TabIndex = 6;
@@ -91,7 +93,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(496, 270);
+            this.submitBtn.Location = new System.Drawing.Point(552, 326);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(75, 23);
             this.submitBtn.TabIndex = 8;
@@ -106,10 +108,10 @@
             this.start,
             this.end,
             this.day});
-            this.dataGridView2.Location = new System.Drawing.Point(50, 270);
+            this.dataGridView2.Location = new System.Drawing.Point(12, 289);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(386, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(478, 150);
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
